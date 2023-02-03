@@ -4,6 +4,7 @@ import { Like, Repository } from 'typeorm';
 import { Booking } from './booking.entity';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { GetBookingsFilterDto } from './dto/get-bookings-filter.dto';
+import { getCountries } from 'node-countries';
 
 @Injectable()
 export class BookingService {
@@ -31,5 +32,19 @@ export class BookingService {
     } else {
       return this.bookingRepository.find({ order: { checkInDate: 'ASC' } });
     }
+  }
+
+  async getCountries(): Promise<any> {
+    let countries = getCountries();
+    countries.sort(function (a, b) {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
+    return countries;
   }
 }
