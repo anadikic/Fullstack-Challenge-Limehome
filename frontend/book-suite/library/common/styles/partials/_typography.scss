@@ -1,0 +1,226 @@
+@import '../library';
+
+// global typography
+$base-font-size: 16px;
+
+$normal: normal;
+$light: 300;
+$bold: bold;
+
+// paragraph styles
+$paragraph-margin: 1.25rem;
+$paragraph-size: 1.125rem;
+$paragraph-color: $grey;
+$paragraph-line-height: 1.4;
+
+// headline styles
+$headline-margin: $paragraph-margin * 0.6;
+$headline-size: 2.8rem;
+$headline-line-height: 1.3;
+$headline-color: $base-font-size;
+
+// blockquote styles
+$blockquote-color: $base-font-size;
+$blockquote-size: 1.4375rem;
+$blockquote-line-height: 1.5;
+$blockquote-margin: $paragraph-margin * 1.5;
+
+body {
+  color: $brown;
+  font-size: $paragraph-size;
+  line-height: $paragraph-line-height;
+  font-family: $base-font-family;
+  font-weight: $normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 $headline-margin 0;
+  line-height: $headline-line-height;
+  font-family: $base-font-family;
+  word-break: break-word;
+}
+
+h1 {
+  margin: 0 0 25px 0;
+  font-size: $headline-size;
+  font-family: $serif;
+  font-weight: $bold;
+  line-height: 1.2;
+  padding-bottom: 15px;
+  border-bottom: 2px solid $grey-light;
+}
+
+h2 {
+  font-size: $headline-size * 0.75;
+  font-weight: $light;
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: $light;
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: $light;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: $bold;
+}
+
+h6 {
+  font-size: $paragraph-size;
+  font-weight: $bold;
+}
+
+p {
+  margin: 0 0 $paragraph-margin 0;
+  font-size: $paragraph-size;
+  font-weight: $normal;
+  line-height: $paragraph-line-height;
+}
+
+.large,
+.large p {
+  font-size: $paragraph-size * 1.3;
+  font-weight: $light;
+}
+
+blockquote {
+  margin: 0 0 $blockquote-margin 0;
+  font-size: $paragraph-size * 1.25;
+  font-weight: $light;
+
+  @include media-breakpoint-up(sm) {
+    font-size: $paragraph-size * 1.35;
+  }
+
+  line-height: $paragraph-line-height * 0.9;
+}
+
+ul,
+ol,
+dl {
+  margin: 0 0 $paragraph-margin 0;
+  padding: 0 0 0 1.25rem;
+  font-size: $paragraph-size;
+
+  li {
+    margin-bottom: 0.6rem;
+  }
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul {
+  list-style-type: square;
+}
+
+dl {
+  margin: 0;
+  padding-left: 0;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 70%;
+}
+
+sup {
+  top: -0.4rem;
+}
+
+// typography helper
+.textalign-center {
+  text-align: center;
+}
+
+.textalign-right {
+  text-align: right;
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+// remove margin
+.marginless {
+  margin: 0;
+}
+
+// remove padding
+.paddingless {
+  padding: 0;
+}
+
+// spacing classes
+.spacing-down-2 {
+  margin-bottom: $headline-margin * 2;
+}
+
+// use to reset basic list styles
+ul,
+ol,
+dl {
+  &.reset {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  h1 {
+    font-size: 1.75em;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.375rem;
+  }
+
+  h4,
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1.125rem;
+  }
+
+  .large {
+    font-size: $paragraph-size * 1.1;
+
+    p {
+      font-size: $paragraph-size * 1.1;
+    }
+  }
+}
+
+@supports (-ms-ime-align: auto) {
+  h6 {
+    font-size: 17px;
+  }
+}
