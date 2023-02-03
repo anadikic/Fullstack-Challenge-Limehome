@@ -1,0 +1,49 @@
+<section class="background-color-white">
+  <ng-container *ngIf="bookings$ | async as sortedBookings">
+    <div class="booking-item" *ngFor="let booking of sortedBookings">
+      <div>
+        <div>
+          <span>
+            <strong>From:</strong>
+            {{ booking.checkInDate | date: 'shortDate' }}
+          </span>
+          <span>
+            <strong>To:</strong>
+            {{ booking.checkOutDate | date: 'shortDate' }}
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>Number of guests:</strong>
+            {{ booking.numberOfGuests }}
+          </span>
+        </div>
+      </div>
+      <div class="user-data">
+        <div>
+          <strong>First and Last name:</strong>
+          <h5>{{ booking.firstName }} {{ booking.lastName }}</h5>
+        </div>
+        <div>
+          <strong>Address:</strong>
+          <div>
+            {{ booking.city }}, {{ booking.billingAddress }},
+            {{ booking.billingCountry }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <strong>Email:</strong>
+          <a href="mailto: {{ booking.email }}">{{ booking.email }}</a>
+        </div>
+        <div>
+          <strong>Phone number:</strong>
+          <a href="phone: {{ booking.phoneNumber }}">
+            {{ booking.phoneNumber }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
