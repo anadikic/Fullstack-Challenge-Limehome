@@ -1,14 +1,8 @@
-import {
-  Body,
-  Controller,
-  Logger,
-  Post,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
+import { Body, Controller, Get, Logger, Post, Query } from '@nestjs/common';
 import { Booking } from './booking.entity';
 import { BookingService } from './booking.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
+import { GetBookingsFilterDto } from './dto/get-bookings-filter.dto';
 
 @Controller('booking')
 export class BookingController {
@@ -26,5 +20,14 @@ export class BookingController {
     );
 
     return this.bookingService.createBooking(createBookingDto);
+  }
+
+  @Get()
+  getBookings(@Query() filterDto: GetBookingsFilterDto): Promise<Booking[]> {
+    this.logger.verbose(
+      `Retreiving all bookings. Filters: ${JSON.stringify(filterDto)}`,
+    );
+
+    return this.bookingService.getBookings(filterDto);
   }
 }
