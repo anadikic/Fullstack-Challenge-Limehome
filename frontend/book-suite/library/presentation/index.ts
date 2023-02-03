@@ -1,5 +1,12 @@
-export { HeaderModule, HeaderComponent } from './lib/modules/header'
+// export { PresentationUiModule } from './lib/presentation-ui.module'
 export {
-  ListOfBookingsComponent,
+  BookingFormModule,
+  BookingFormComponent,
+} from './lib/modules/booking-form'
+export {
   ListOfBookingsModule,
-} from './lib/modules//list-of-bookings'
+  ListOfBookingsComponent,
+} from './lib/modules/list-of-bookings'
+export { HeaderModule, HeaderComponent } from './lib/modules/header'
+export { TextInputComponent } from './lib/modules/booking-form/inputs/text-input/text-input.component'
+export { GroupComponent } from './lib/modules/booking-form/group/group.component'

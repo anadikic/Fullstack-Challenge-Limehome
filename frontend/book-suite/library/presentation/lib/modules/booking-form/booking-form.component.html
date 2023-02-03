@@ -1,0 +1,197 @@
+<form [formGroup]="bookingForm">
+  <div class="form-data-wrapper">
+    <div class="data-group two-rows first-row">
+      <div class="group">
+        <lh-group
+          [class]="'dates'"
+          [control]="f.dates"
+          [label]="'Check-in/out dates'"
+          [submitted]="submitted"
+        >
+          <input
+            type="text"
+            matInput
+            ngxDaterangepickerMd
+            [locale]="{ applyLabel: 'ok', format: 'MMM-DD' }"
+            startKey="start"
+            endKey="end"
+            formControlName="dates"
+            [(ngModel)]="selected"
+            (focus)="hasFocus = 'dates'"
+            (blur)="hasFocus = ''"
+            name="daterange"
+          />
+          <div *ngIf="submitted && f.dates.errors" class="invalid-feedback">
+            <div *ngIf="f.dates.errors['required']">
+              Check-in and Check-out dates are required.
+            </div>
+          </div>
+          <div
+            *ngIf="submitted && f.dates.errors && !f.dates.errors['required']"
+            class="invalid-feedback"
+          >
+            <div>
+              Check-in and Check-out dates can't be in the past. Check-out date
+              has to be grater then Check-in date.
+            </div>
+          </div>
+        </lh-group>
+      </div>
+      <div class="group">
+        <lh-group
+          [control]="f.numberOfGuests"
+          [label]="'Number of guests'"
+          [submitted]="submitted"
+        >
+          <input
+            formControlName="numberOfGuests"
+            id="numberOfGuests"
+            (focus)="hasFocus = 'numberOfGuests'"
+            (blur)="hasFocus = ''"
+            type="text"
+            maxlength="50"
+          />
+          <div *ngIf="submitted && f.dates.errors" class="invalid-feedback">
+            <div *ngIf="f.dates.errors['min']">
+              Number of persons needs to be more than 0.
+            </div>
+          </div>
+        </lh-group>
+      </div>
+    </div>
+
+    <div class="data-group two-rows">
+      <div class="group">
+        <lh-group
+          [control]="f.firstName"
+          [label]="'First Name'"
+          [submitted]="submitted"
+        >
+          <lh-text-input
+            [control]="f.firstName"
+            [label]="'First Name'"
+            [submitted]="submitted"
+          ></lh-text-input>
+        </lh-group>
+      </div>
+      <div class="group">
+        <lh-group
+          [control]="f.lastName"
+          [label]="'Last Name'"
+          [submitted]="submitted"
+        >
+          <lh-text-input
+            [control]="f.lastName"
+            [label]="'Last Name'"
+            [submitted]="submitted"
+          ></lh-text-input>
+        </lh-group>
+      </div>
+    </div>
+
+    <div class="data-group two-rows">
+      <div class="group">
+        <lh-group
+          [control]="f.billingAddress"
+          [label]="'Billing address'"
+          [submitted]="submitted"
+        >
+          <lh-text-input
+            [control]="f.billingAddress"
+            [label]="'Billing address'"
+            [submitted]="submitted"
+          ></lh-text-input>
+        </lh-group>
+      </div>
+      <div class="group" *ngIf="countries$ | async as countries">
+        <lh-group
+          [control]="f.billingCountry"
+          [label]="'Billing country'"
+          [submitted]="submitted"
+        >
+          <div class="select-wrapper">
+            <select
+              formControlName="billingCountry"
+              id="billingCountry"
+              (focus)="hasFocus = 'billingCountry'"
+              (blur)="hasFocus = ''"
+            >
+              <option [value]="null" selected="selected">
+                Select Country...
+              </option>
+              <option *ngFor="let item of countries" [value]="item.alpha2">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+        </lh-group>
+      </div>
+    </div>
+
+    <div class="data-group two-rows">
+      <div class="group">
+        <lh-group
+          [control]="f.postalCode"
+          [label]="'Postal Code'"
+          [submitted]="submitted"
+        >
+          <lh-text-input
+            [control]="f.postalCode"
+            [label]="'Postal Code'"
+            [submitted]="submitted"
+          ></lh-text-input>
+        </lh-group>
+      </div>
+      <div class="group">
+        <lh-group [control]="f.city" [label]="'City'" [submitted]="submitted">
+          <lh-text-input
+            [control]="f.city"
+            [label]="'City'"
+            [submitted]="submitted"
+          ></lh-text-input>
+        </lh-group>
+      </div>
+    </div>
+
+    <div class="data-group two-rows">
+      <div class="group">
+        <lh-group [control]="f.email" [label]="'Email'" [submitted]="submitted">
+          <lh-text-input
+            [control]="f.email"
+            [label]="'Email'"
+            [submitted]="submitted"
+          ></lh-text-input>
+        </lh-group>
+      </div>
+      <div class="group">
+        <lh-group
+          [control]="f.phoneNumber"
+          [label]="'Phone Number'"
+          [submitted]="submitted"
+        >
+          <lh-text-input
+            [control]="f.phoneNumber"
+            [label]="'phoneNumber'"
+            [submitted]="submitted"
+          ></lh-text-input>
+        </lh-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group button-wrapper">
+    <div *ngIf="errorMessage$ | async as errorMessage" class="error-message">
+      <ng-container *ngIf="showError && showError.length > 0">
+        <div *ngFor="let item of showError">
+          {{ item }}
+        </div>
+      </ng-container>
+    </div>
+    <button type="submit" class="button primary" (click)="onSubmit()">
+      <span class="text" *ngIf="!loading">Book now</span>
+      <span class="loading" *ngIf="loading">
+        <img src="assets/images/loader.svg" />
+      </span>
+    </button>
+  </div>
+</form>
