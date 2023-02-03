@@ -13,6 +13,7 @@ import { BookingService } from './booking.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { GetBookingsFilterDto } from './dto/get-bookings-filter.dto';
 import { BookingValidationPipe } from './pipes/booking-dates-validation.pipe';
+import { ApiQuery } from '@nestjs/swagger';
 
 @Controller('booking')
 export class BookingController {
@@ -34,6 +35,7 @@ export class BookingController {
   }
 
   @Get()
+  @ApiQuery({ name: 'searchTerm', required: false })
   getBookings(@Query() filterDto: GetBookingsFilterDto): Promise<Booking[]> {
     this.logger.verbose(
       `Retreiving all bookings. Filters: ${JSON.stringify(filterDto)}`,
