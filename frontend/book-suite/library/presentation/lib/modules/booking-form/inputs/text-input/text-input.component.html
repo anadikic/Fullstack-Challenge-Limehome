@@ -1,0 +1,26 @@
+<label (click)="input.focus()">
+  <!-- <span class="labelcontent">
+    <span>{{ label }}</span>
+    <span class="red">*</span>
+  </span> -->
+  <input
+    #input
+    [formControl]="control"
+    (focus)="hasFocus = true"
+    (blur)="hasFocus = false"
+    type="text"
+    [placeholder]="label"
+  />
+  <!-- </label>
+
+<div *ngIf="submitted && control.errors" class="invalid-feedback">
+  <div *ngIf="control.errors['required']">{{ label }} is required</div>
+  <div *ngIf="control.errors['email']">
+    {{ label }} has to be in the valid format
+  </div>
+  <div *ngIf="control.errors['maxLength']">
+    {{ label }} can't be longer than
+    {{ control.errors['maxLength'].value }} characters
+  </div>
+</div> -->
+</label>

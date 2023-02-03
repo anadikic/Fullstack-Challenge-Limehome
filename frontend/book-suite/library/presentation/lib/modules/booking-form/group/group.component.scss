@@ -1,0 +1,55 @@
+@import '../../../../../common/styles/library.scss';
+
+:host {
+  width: 100%;
+
+  .invalid-feedback {
+    color: $red;
+    padding: 0 10px;
+    font-size: 16px;
+    position: relative;
+    left: 10px;
+    bottom: 0;
+  }
+
+  label {
+    position: relative;
+    width: 100%;
+    .labelcontent {
+      top: 0.8rem;
+      left: 0.9rem;
+      color: $grey;
+      font-size: 1.125rem;
+      font-weight: 300;
+      transform-origin: 0 0.7rem;
+      transition: all 0.3s ease-in-out;
+      z-index: 10;
+      margin-bottom: 10px;
+      span.red {
+        color: $red;
+        font-size: 20px;
+        margin-left: 5px;
+      }
+    }
+
+    &.active.hasvalue {
+      .labelcontent {
+        color: $grey;
+      }
+    }
+
+    &.dates {
+      input {
+        z-index: 10;
+      }
+      &:after {
+        content: url('../../../../../../src//assets/images/calendar.svg');
+        position: absolute;
+        width: 30px;
+        right: 14px;
+        top: 52px;
+        z-index: -1;
+      }
+    }
+  }
+}

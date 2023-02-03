@@ -1,0 +1,24 @@
+<div class="group">
+  <label for="dates" [class]="class">
+    <span class="labelcontent">
+      <span>{{ label }}</span>
+      <span class="red">*</span>
+    </span>
+    <ng-content></ng-content>
+  </label>
+
+  <div *ngIf="submitted && control.errors" class="invalid-feedback">
+    <div *ngIf="control.errors['required']">{{ label }} is required</div>
+    <div *ngIf="control.errors['email']">
+      {{ label }} has to be in the valid format
+    </div>
+    <div *ngIf="control.errors['maxLength']">
+      {{ label }} can't be longer than
+      {{ control.errors['maxLength'].value }} characters
+      {{ control.errors['min'].value }} persons
+    </div>
+    <div *ngIf="control.errors['min']">
+      {{ control.errors['min'].value }} Number of persons has to be more than 0
+    </div>
+  </div>
+</div>
