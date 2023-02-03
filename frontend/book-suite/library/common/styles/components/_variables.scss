@@ -1,0 +1,37 @@
+// color variables
+// primary colors
+$background: #f7f1e9;
+$grey: #747d85; // primary font color
+$grey-light: #a9acb3;
+$green: #a2ab98;
+$brown: #4b4b4d;
+$white: #fff;
+$black: #000;
+$red: rgb(194, 39, 39);
+$base-font-family: 'Arial';
+
+// typography
+$serif: 'Arial', serif;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 960px,
+  xl: 1120px,
+  xxl: 1600px,
+) !default;
+
+$grid-gap: 20px;
+$header-toolbar-height: 48px;
+$grid-page-end: 60px;
+
+// spacing
+$spacing-unit: 1rem;
+$spacing-xxs: 0.25 * $spacing-unit;
+$spacing-xs: 0.5 * $spacing-unit;
+$spacing-sm: 0.75 * $spacing-unit;
+$spacing-md: 1.25 * $spacing-unit;
+$spacing-lg: 2 * $spacing-unit;
+$spacing-xl: 3.25 * $spacing-unit;
+$spacing-xxl: 5.25 * $spacing-unit;

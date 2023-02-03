@@ -1,0 +1,22 @@
+<section>
+  <div class="container">
+    <a class="logo" bs-link routerLink="/">Limehome</a>
+    <a
+      class="menu"
+      [ngClass]="openNav ? 'open' : ''"
+      (click)="openNav = !openNav"
+    ></a>
+    <nav [ngClass]="openNav ? 'open' : ''">
+      <ul>
+        <li>
+          <a routerLinkActive="active-link" routerLink="bookings">
+            Bookings
+          </a>
+          <a routerLinkActive="active-link" routerLink="booking">
+            Create booking
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
