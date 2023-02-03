@@ -1,8 +1,18 @@
-import { Body, Controller, Get, Logger, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Logger,
+  Post,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { Booking } from './booking.entity';
 import { BookingService } from './booking.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { GetBookingsFilterDto } from './dto/get-bookings-filter.dto';
+import { BookingValidationPipe } from './pipes/booking-dates-validation.pipe';
 
 @Controller('booking')
 export class BookingController {
@@ -11,8 +21,9 @@ export class BookingController {
   constructor(private bookingService: BookingService) {}
 
   @Post()
+  @UsePipes(ValidationPipe)
   createBooking(
-    @Body()
+    @Body(BookingValidationPipe)
     createBookingDto: CreateBookingDto,
   ): Promise<Booking> {
     this.logger.verbose(
