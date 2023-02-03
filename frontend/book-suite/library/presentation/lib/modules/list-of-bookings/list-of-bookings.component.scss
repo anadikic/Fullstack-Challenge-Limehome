@@ -1,0 +1,46 @@
+@import '../../../../../library/common/styles/library.scss';
+
+:host {
+  .booking-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: $green;
+    display: flex;
+    justify-content: space-between;
+    .user-data {
+      & > div {
+        display: flex;
+        h5,
+        div {
+          margin-left: 15px;
+        }
+      }
+    }
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      padding: 5px;
+      .user-data {
+        & > div {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+  h5,
+  span,
+  strong,
+  p,
+  div,
+  a {
+    color: $white;
+  }
+  h5 {
+    margin-bottom: 0;
+  }
+  strong {
+    margin-right: 5px;
+    &:last-of-type {
+      margin-left: 15px;
+    }
+  }
+}
