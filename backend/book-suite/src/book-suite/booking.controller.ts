@@ -30,4 +30,11 @@ export class BookingController {
 
     return this.bookingService.getBookings(filterDto);
   }
+
+  @Get('countries')
+  getCountries(): Promise<any> {
+    this.logger.verbose(`Retreiving all countries.}`);
+
+    return this.bookingService.getCountries();
+  }
 }
